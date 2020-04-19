@@ -2,6 +2,7 @@ package main;
 
 import global.AbstractRenderer;
 import global.GLCamera;
+import lwjglutils.OGLTexture2D;
 import org.lwjgl.BufferUtils;
 import org.lwjgl.glfw.GLFWCursorPosCallback;
 import org.lwjgl.glfw.GLFWKeyCallback;
@@ -11,22 +12,31 @@ import org.lwjgl.glfw.GLFWScrollCallback;
 
 import java.io.IOException;
 import java.nio.DoubleBuffer;
+import java.util.Locale;
 
 import static global.GluUtils.gluLookAt;
 import static global.GluUtils.gluPerspective;
+import static global.GlutUtils.glutSolidCube;
 import static global.GlutUtils.glutSolidSphere;
 import static org.lwjgl.glfw.GLFW.*;
 import static org.lwjgl.glfw.GLFW.GLFW_PRESS;
 import static org.lwjgl.opengl.GL11.*;
 import static org.lwjgl.opengl.GL13.*;
+import static org.lwjgl.opengl.GL14C.glBlendFuncSeparate;
 
 
 public class Renderer extends AbstractRenderer {
-    private lwjglutils.OGLTexture2D tx1, tx2, tx3;
+    private lwjglutils.OGLTexture2D tx1, tx2, tx3, tx4, tx5, tx6, tx7,tx8, tx9,tx10,tx11;
     private float dx, dy, ox, oy;
     private float px, py, pz;
     private double ex, ey, ez;
     private float zenit, azimut;
+
+    private double fps;
+    private long oldmils;
+    private long oldFPSmils;
+    private long mils;
+    private float step;
 
     private float trans, deltaTrans = 0;
 
@@ -208,7 +218,14 @@ public class Renderer extends AbstractRenderer {
         try {
             tx1 = new lwjglutils.OGLTexture2D("textures/e952eced5348711e8a305c740399abef.jpg");
             tx2 = new lwjglutils.OGLTexture2D("textures/red-tile-roof-texture.jpg");
-            tx3= new lwjglutils.OGLTexture2D("textures/photos.jpg");
+            tx3 = new lwjglutils.OGLTexture2D("textures/photos.jpg");
+            tx4 = new lwjglutils.OGLTexture2D("textures/livingroom.jpg");
+            tx5 = new lwjglutils.OGLTexture2D("textures/door.jpg");
+            tx6 = new lwjglutils.OGLTexture2D("textures/gold.jpg");
+            tx7 = new lwjglutils.OGLTexture2D("textures/beehouse.jpg");
+            tx8= new lwjglutils.OGLTexture2D("textures/beeroof.jpg");
+            tx9= new lwjglutils.OGLTexture2D("textures/drawner.jpg");
+            tx10=new lwjglutils.OGLTexture2D("textures/animal-bee.jpg");
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -222,24 +239,299 @@ public class Renderer extends AbstractRenderer {
         camera = new GLCamera();
     }
 
-    private void drawScene() {
+    private void drawBeeHouse() {
+
+        glMatrixMode(GL_TEXTURE);
+        glLoadIdentity();
+
+        glMatrixMode(GL_MODELVIEW);
+        glTranslatef(-5, -10f, 0.5f); //prvotní posun krychlí na danou pozici
+        glEnable(GL_TEXTURE_2D);
+
+
+
+
+
+
+        tx7.bind();
+        for (int i = 0; i < 2; i++) {
+            glBegin(GL_QUADS);
+
+        // vytvoření více stejných objektů
+
+            glTranslatef(0, 0, 1f); // tak aby byly krychle na sobě
+            glPushMatrix();
+            // zadní strana krychle
+            glColor3f(1.0f, 1.0f, 1);
+            glTexCoord2f(1, 0);
+            glVertex3f(1.0f, 1.0f, -1.0f + i);
+            glTexCoord2f(0, 0);
+            glVertex3f(-1.0f, 1.0f, -1.0f + i);
+            glTexCoord2f(0, 1);
+            glVertex3f(-1.0f, 1.0f, 1.0f + i);
+            glTexCoord2f(1, 1);
+            glVertex3f(1.0f, 1.0f, 1.0f + i);
+            glDisable(GL_TEXTURE_2D);
+
+
+            //přední hrana krychle
+            // glColor3f(1.0f, 0.5f, 0.0f+i);
+            glTexCoord2f(1, 1);
+            glVertex3f(1.0f, -1.0f, 1.0f + i);
+            glTexCoord2f(0, 1);
+            glVertex3f(-1.0f, -1.0f, 1.0f + i);
+            glTexCoord2f(0, 0);
+            glVertex3f(-1.0f, -1.0f, -1.0f + i);
+            glTexCoord2f(1, 0);
+            glVertex3f(1.0f, -1.0f, -1.0f + i);
+            glDisable(GL_TEXTURE_2D);
+
+
+
+      // spodní hrana taky nebude potřeba
+        /*
+           // glColor3f(1.0f, 1.0f, 0.0f + i);
+            glTexCoord2f(1,0);
+            glVertex3f(1.0f, -1.0f, -1.0f + i);
+            glTexCoord2f(0,0);
+            glVertex3f(-1.0f, -1.0f, -1.0f + i);
+            glTexCoord2f(0,1);
+            glVertex3f(-1.0f, 1.0f, -1.0f + i);
+            glTexCoord2f(1,1);
+            glVertex3f(1.0f, 1.0f, -1.0f + i);
+
+
+         */
+
+
+            // levá boční
+           // glColor3f(0.0f, 0.0f, 1.0f + i);
+            glTexCoord2f(1,1);
+            glVertex3f(-1.0f, 1.0f, 1.0f + i);
+            glTexCoord2f(1,0);
+            glVertex3f(-1.0f, 1.0f, -1.0f + i);
+            glTexCoord2f(0,0);
+            glVertex3f(-1.0f, -1.0f, -1.0f + i);
+            glTexCoord2f(0,1);
+            glVertex3f(-1.0f, -1.0f, 1.0f + i);
+
+
+            // pravá boční
+
+            //glColor3f(1.0f, 0.0f, 1.0f + i);
+            glTexCoord2f(1,0);
+            glVertex3f(1.0f, 1.0f, -1.0f + i);
+            glTexCoord2f(1,1);
+            glVertex3f(1.0f, 1.0f, 1.0f + i);
+            glTexCoord2f(0,1);
+            glVertex3f(1.0f, -1.0f, 1.0f + i);
+            glTexCoord2f(0,0);
+            glVertex3f(1.0f, -1.0f, -1.0f + i);
+
+
+        }
+        glEnd();
+        glPopMatrix();
+
+
+
+        glDisable(GL_TEXTURE_2D);
+
+        glTranslatef(-5, -10f, 0.5f);
+
+
+        //střecha domečku pro včely
+
+        glEnable(GL_TEXTURE_2D);
+        tx8.bind();
+
+        glBegin(GL_TRIANGLE_STRIP);
+        //glColor3f(1,-1,1);
+        glTexCoord2f(0,0);
+        glVertex3f(1,1,3.0f-1);
+        glTexCoord2f(1,0);
+        glVertex3f(1,-1,3.0f-1);
+        glTexCoord2f(0.5f,0.5f);
+        glVertex3f(0.0f,0.0f,4.0f-1);
+        glTexCoord2f(0,0);
+        glVertex3f(-1,1,3.0f-1);
+        glTexCoord2f(1,0);
+        glVertex3f(-1,-1,3.0f-1);
+        glTexCoord2f(0.5f,0.5f);
+        glVertex3f(0.0f,0.0f,4.0f-1);
+        glTexCoord2f(0,0);
+        glVertex3f(1,1,3.0f-1);
+        glTexCoord2f(1,0);
+        glVertex3f(-1,1,3.0f-1);
+        glTexCoord2f(0.5f,0.5f);
+        glVertex3f(0.0f,0.0f,4.0f-1);
+        glTexCoord2f(0,0);
+        glVertex3f(-1,-1,3.0f-1);
+        glTexCoord2f(1,0);
+        glVertex3f(1,-1,3.0f-1);
+        glTexCoord2f(0.5f,0.5f);
+        glVertex3f(0.0f,0.0f,4.0f-1);
+
+
+        glEnd();
+        glDisable(GL_TEXTURE_2D);
+
+        glEnable(GL_TEXTURE_2D);
+        tx9.bind();
+       // glTranslatef(-5, -10f, 0.5f);
+        glBegin(GL_POLYGON);
+        glColor3f(1,1,1);
+
+
+        glTexCoord2f(1,1);
+        glVertex3f(1.0f, -1.01f, 1.0f);
+        glTexCoord2f(0,1);
+        glVertex3f(-1.0f, -1.01f, 1.0f);
+        glTexCoord2f(0,0);
+        glVertex3f(-1.0f, -1.01f, -1.0f);
+        glTexCoord2f(1,0);
+        glVertex3f(1.0f, -1.01f, -1.0f);
+
+
+
+        glEnd();
+
+    }
+
+    private void bee(){
+
+
+        float a=0.11f,  b=0.21f, c=0.11f;
+        int slic=30;
+        int ui=25;
+//15 10
+        float t = (float) ((Math.PI) /  slic);
+        float s= (float)(Math.PI/ ui);
+
+        glMatrixMode(GL_TEXTURE);
+        glLoadIdentity();
+
+
+        glMatrixMode(GL_MODELVIEW);
+
+       glEnable(GL_TEXTURE_2D);
+        glRotatef((float)fps, 100, 100, 100);
+        glTranslatef(-1, -1f, 3f);
+        tx10.bind();
+        glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+        glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
+
+            glBegin(GL_TRIANGLE_STRIP);
+            glPushMatrix();
+        for(float i = (float) (-(Math.PI)/2); i <= (Math.PI/2)+.0001; i += t){
+            for(float j = (float) -(Math.PI); j <= (Math.PI)+.0001; j += s){
+
+                glTexCoord2f(0,0);
+                glVertex3f((float)( a * Math.cos(i) * Math.cos(s)),(float)( b * Math.cos(i) * Math.sin(s)), (float) (c * Math.sin(i)));
+                glTexCoord2f(1,1);
+
+                glVertex3f((float) (a *  Math.cos(i+t) * Math.cos(j)), (float)(b * Math.cos(i+t) * Math.sin(j)), (float)(c * Math.sin(i+t)));
+            }
+
+
+        }
+
+        glFlush(); // vykonání předchozích kroků
+        glEnd();
+        glPopMatrix();
+        glDisable(GL_TEXTURE_2D);
+
+
+        glEnable(GL_TEXTURE_2D);
+        glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR); //aplikování textury na 3d povrh
+        //klika na dveřích
+        glPushMatrix();
+        glTranslatef(0, 0.25f, 0);
+        // glTexCoord3f(1, 1, 1); //aplikace
+        glColor3f(0f, 0f, 0f);
+        glutSolidSphere(0.08, 100, 50); // POČET VRCHOLŮ V HORIZONTÁLNÍM SMĚRU (LAST)  A VERTIKÁLNÍM (LONGS)
+        glPopMatrix();
+
+    }
+
+
+
+
+
+    private void drawHouse() {
 
         glMatrixMode(GL_TEXTURE);
 
-        tx1.bind();
+
         glLoadIdentity();
 
         glMatrixMode(GL_MODELVIEW);
         glEnable(GL_TEXTURE_2D);
 
 
-        //  glEnable(GL_TEXTURE_2D);
-        // glActiveTexture(GL_TEXTURE1);
+        //- žaluzky
+
+        tx4.bind();
+        glEnable(GL_TEXTURE_2D);
+
+        // pravý přední okno
+        glBegin(GL_POLYGON);
+        glColor3f(1, 1, 1);
+        glTexCoord2f(1, 0.5f);
+        glVertex3f(1.8f, -2.005f, 2.3f);
+        glTexCoord2f(1, 0);
+        glVertex3f(1.8f, -2.005f, 1.3f);
+        glTexCoord2f(0, 0);
+        glVertex3f(0.8f, -2.005f, 1.3f);
+        glTexCoord2f(0, 0.5f);
+        glVertex3f(0.8f, -2.005f, 2.3f);
+        glEnd();
+
+        glBegin(GL_POLYGON);
+        glColor3f(1.0f, 1.0f, 1.0f);
+        glTexCoord2f(1, 0.5f);
+        glVertex3f(6.7f, -2.005f, 2.3f);
+        glTexCoord2f(1, 0);
+        glVertex3f(6.7f, -2.005f, 1.3f);
+        glTexCoord2f(0, 0);
+        glVertex3f(5.7f, -2.005f, 1.3f);
+        glTexCoord2f(0, 0.5f);
+        glVertex3f(5.7f, -2.005f, 2.3f);
+        glEnd();
+
+        glBegin(GL_POLYGON);
+        glColor3f(1.0f, 1.0f, 1.0f);
+        glTexCoord2f(1, 0.5f);
+        glVertex3f(1.8f, 2.005f, 2.3f);
+        glTexCoord2f(1, 0);
+        glVertex3f(1.8f, 2.005f, 1.3f);
+        glTexCoord2f(0, 0);
+        glVertex3f(0.8f, 2.005f, 1.3f);
+        glTexCoord2f(0, 0.5f);
+        glVertex3f(0.8f, 2.005f, 2.3f);
+        glEnd();
+
+        glBegin(GL_POLYGON);
+        glColor3f(1.0f, 1.0f, 1.0f);
+        glTexCoord2f(1, 0.5f);
+        glVertex3f(6.7f, 2.005f, 2.3f);
+        glTexCoord2f(1, 0);
+        glVertex3f(6.7f, 2.005f, 1.3f);
+        glTexCoord2f(0, 0);
+        glVertex3f(5.7f, 2.005f, 1.3f);
+        glTexCoord2f(0, 0.5f);
+        glVertex3f(5.7f, 2.005f, 2.3f);
+        glEnd();
+
 
         //-------------------------- kostra domu -------------------------//
 
+
         // přední stěna
 
+
+        tx1.bind();
+        glEnable(GL_TEXTURE_2D);
         glBegin(GL_POLYGON);
         glColor3f(1, 1, 1);
         glTexCoord2f(1, 1);
@@ -375,10 +667,15 @@ public class Renderer extends AbstractRenderer {
         //----------------------okna---------//
 
         //levý přední
+        glEnable(GL_BLEND); //"průhlednost oken"
+        glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
+        glBlendFuncSeparate(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA, GL_ONE, GL_ZERO); //řešení pomocí alfa kanálu
         glBegin(GL_POLYGON);
-        glColor3f(1.0f, 1.0f, 1.0f);
+        glColor4f(1, 1, 1, 0.5f);
+        //glColor4f(0.69f, 0.80f, 0.92f, 0.5f); // definováno na světle modrou a alfa kanál hlavně
         glVertex3f(1.8f, -2.01f, 2.3f);
         glVertex3f(1.8f, -2.01f, 1.3f);
+        glColor4f(0.0f, 0.0f, 0.6f, 0.6f);
         glVertex3f(0.8f, -2.01f, 1.3f);
         glVertex3f(0.8f, -2.01f, 2.3f);
         glEnd();
@@ -386,10 +683,13 @@ public class Renderer extends AbstractRenderer {
 
         //pravý přední
 
+
         glBegin(GL_POLYGON);
-        glColor3f(1.0f, 1.0f, 1.0f);
+        //glColor3f(1.0f, 1.0f, 1.0f);
+        glColor4f(0.69f, 0.80f, 0.92f, 0.5f);
         glVertex3f(6.7f, -2.01f, 2.3f);
         glVertex3f(6.7f, -2.01f, 1.3f);
+        glColor4f(0.0f, 0.0f, 0.6f, 0.6f);
         glVertex3f(5.7f, -2.01f, 1.3f);
         glVertex3f(5.7f, -2.01f, 2.3f);
         glEnd();
@@ -399,21 +699,28 @@ public class Renderer extends AbstractRenderer {
 
         //levý zadní
         glBegin(GL_POLYGON);
-        glColor3f(1.0f, 1.0f, 1.0f);
+        //glColor3f(1.0f, 1.0f, 1.0f);
+        glColor4f(0.69f, 0.80f, 0.92f, 0.5f);
         glVertex3f(1.8f, 2.01f, 2.3f);
         glVertex3f(1.8f, 2.01f, 1.3f);
+        glColor4f(0.0f, 0.0f, 0.6f, 0.6f);
         glVertex3f(0.8f, 2.01f, 1.3f);
         glVertex3f(0.8f, 2.01f, 2.3f);
         glEnd();
 
         //pravý přední
         glBegin(GL_POLYGON);
-        glColor3f(1.0f, 1.0f, 1.0f);
+        //glColor3f(1.0f, 1.0f, 1.0f);
+        glColor4f(0.69f, 0.80f, 0.92f, 0.5f);
         glVertex3f(6.7f, 2.01f, 2.3f);
         glVertex3f(6.7f, 2.01f, 1.3f);
+        glColor4f(0.0f, 0.0f, 0.6f, 0.6f);
         glVertex3f(5.7f, 2.01f, 1.3f);
         glVertex3f(5.7f, 2.01f, 2.3f);
         glEnd();
+        glDisable(GL_BLEND);
+
+        //glDisable(GL_TEXTURE_2D);
 
         //----------------------okna---------//
 
@@ -422,31 +729,61 @@ public class Renderer extends AbstractRenderer {
 
         //přední dveře
 
+        tx5.bind();
+        glEnable(GL_TEXTURE_2D);
         glBegin(GL_POLYGON);
         glColor3f(1.0f, 1.0f, 1.0f);
+        glTexCoord2f(0, 1);
         glVertex3f(3.25f, -2.01f, 2.3f);
+        glTexCoord2f(0, 0);
         glVertex3f(3.25f, -2.01f, 0.52f);
+        glTexCoord2f(1, 0);
         glVertex3f(4.25f, -2.01f, 0.52f);
+        glTexCoord2f(1, 1);
         glVertex3f(4.25f, -2.01f, 2.3f);
         glEnd();
+        glDisable(GL_TEXTURE_2D);
 
+
+        tx6.bind();
+        glEnable(GL_TEXTURE_2D);
+        glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR); //aplikování textury na 3d povrh
         //klika na dveřích
         glPushMatrix();
-        glColor3f(0.5f, 1.0f, 0.0f);
+        glTexCoord3f(1, 1, 1); //aplikace
+        glColor3f(1f, 1.0f, 1.0f);
         glTranslatef(4.15f, -2.03f, 1.25f); // posun na nějakou pozici
-        glutSolidSphere(0.1, 100, 100); // POČET VRCHOLŮ V HORIZONTÁLNÍM SMĚRU (LAST)  A VERTIKÁLNÍM (LONGS)
+        glutSolidSphere(0.05, 100, 100); // POČET VRCHOLŮ V HORIZONTÁLNÍM SMĚRU (LAST)  A VERTIKÁLNÍM (LONGS)
         glPopMatrix();
+        glDisable(GL_TEXTURE_2D);
 
 
         glPopMatrix();
 
     }
 
+
     @Override
     public void display() {
         glViewport(0, 0, width, height);
         glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
         glEnable(GL_DEPTH_TEST);
+
+        // vypocet fps, nastaveni rychlosti otaceni podle rychlosti prekresleni
+         mils = System.currentTimeMillis();
+        // System.out.println(mils);
+        if ((mils - oldFPSmils) > 300) {
+            fps = 1000 / (double) (mils - oldmils + 1);
+            oldFPSmils = mils;
+        }
+        String textInfo ;
+
+        //System.out.println(fps);
+        float speed = 10; // pocet stupnu rotace za vterinu
+         step = speed * (mils - oldmils) / 1000.0f; // krok za jedno
+        oldmils = mils;
+
+
         String text = this.getClass().getName() + ": [lmb] move";
 
         trans += deltaTrans;
@@ -492,8 +829,8 @@ public class Renderer extends AbstractRenderer {
             text += ", Ani[m] ";
 
 
-        String textInfo = String.format("position (%3.1f, %3.1f, %3.1f)", px, py, pz);
-        textInfo += String.format(" azimuth %3.1f, zenith %3.1f)", azimut, zenit);
+         text = String.format("FPS (%3.1f,)", fps);
+        textInfo = String.format(" azimuth %3.1f, zenith %3.1f)", azimut, zenit);
         textInfo += String.format(" trans %3.1f,  delta %3.1f)", trans, deltaTrans);
 
 
@@ -502,6 +839,12 @@ public class Renderer extends AbstractRenderer {
         textRenderer.addStr2D(3, 40, textInfo);
 
         textRenderer.draw();
+    }
+
+    private void drawScene() {
+        drawHouse();
+        drawBeeHouse();
+        bee();
     }
 }
 
