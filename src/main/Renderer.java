@@ -2,7 +2,6 @@ package main;
 
 import global.AbstractRenderer;
 import global.GLCamera;
-import lwjglutils.OGLTexture2D;
 import org.lwjgl.BufferUtils;
 import org.lwjgl.glfw.GLFWCursorPosCallback;
 import org.lwjgl.glfw.GLFWKeyCallback;
@@ -12,11 +11,9 @@ import org.lwjgl.glfw.GLFWScrollCallback;
 
 import java.io.IOException;
 import java.nio.DoubleBuffer;
-import java.util.Locale;
+import java.util.Random;
 
-import static global.GluUtils.gluLookAt;
 import static global.GluUtils.gluPerspective;
-import static global.GlutUtils.glutSolidCube;
 import static global.GlutUtils.glutSolidSphere;
 import static org.lwjgl.glfw.GLFW.*;
 import static org.lwjgl.glfw.GLFW.GLFW_PRESS;
@@ -26,7 +23,7 @@ import static org.lwjgl.opengl.GL14C.glBlendFuncSeparate;
 
 
 public class Renderer extends AbstractRenderer {
-    private lwjglutils.OGLTexture2D tx1, tx2, tx3, tx4, tx5, tx6, tx7,tx8, tx9,tx10,tx11;
+    private lwjglutils.OGLTexture2D tx1, tx2, tx3, tx4, tx5, tx6, tx7, tx8, tx9, tx10, tx11, tx12, tx13, tx14, tx15;
     private float dx, dy, ox, oy;
     private float px, py, pz;
     private double ex, ey, ez;
@@ -37,6 +34,10 @@ public class Renderer extends AbstractRenderer {
     private long oldFPSmils;
     private long mils;
     private float step;
+    Random random = new Random();
+
+    int plantmove = -5;
+
 
     private float trans, deltaTrans = 0;
 
@@ -223,9 +224,14 @@ public class Renderer extends AbstractRenderer {
             tx5 = new lwjglutils.OGLTexture2D("textures/door.jpg");
             tx6 = new lwjglutils.OGLTexture2D("textures/gold.jpg");
             tx7 = new lwjglutils.OGLTexture2D("textures/beehouse.jpg");
-            tx8= new lwjglutils.OGLTexture2D("textures/beeroof.jpg");
-            tx9= new lwjglutils.OGLTexture2D("textures/drawner.jpg");
-            tx10=new lwjglutils.OGLTexture2D("textures/animal-bee.jpg");
+            tx8 = new lwjglutils.OGLTexture2D("textures/beeroof.jpg");
+            tx9 = new lwjglutils.OGLTexture2D("textures/drawner.jpg");
+            tx10 = new lwjglutils.OGLTexture2D("textures/animal-bee.jpg");
+            tx11 = new lwjglutils.OGLTexture2D("textures/grass.jpg");
+            tx12 = new lwjglutils.OGLTexture2D("textures/pavement.jpg");
+            tx13 = new lwjglutils.OGLTexture2D("textures/plant01.png");
+            tx14 = new lwjglutils.OGLTexture2D("textures/garage.jpg");
+            tx15 = new lwjglutils.OGLTexture2D("textures/garroof.jpg");
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -237,6 +243,8 @@ public class Renderer extends AbstractRenderer {
 
 
         camera = new GLCamera();
+
+
     }
 
     private void drawBeeHouse() {
@@ -245,19 +253,15 @@ public class Renderer extends AbstractRenderer {
         glLoadIdentity();
 
         glMatrixMode(GL_MODELVIEW);
-        glTranslatef(-5, -10f, 0.5f); //prvotní posun krychlí na danou pozici
+        glTranslatef(-5, -10f, 1.5f); //prvotní posun krychlí na danou pozici
         glEnable(GL_TEXTURE_2D);
-
-
-
-
 
 
         tx7.bind();
         for (int i = 0; i < 2; i++) {
             glBegin(GL_QUADS);
 
-        // vytvoření více stejných objektů
+            // vytvoření více stejných objektů
 
             glTranslatef(0, 0, 1f); // tak aby byly krychle na sobě
             glPushMatrix();
@@ -287,8 +291,7 @@ public class Renderer extends AbstractRenderer {
             glDisable(GL_TEXTURE_2D);
 
 
-
-      // spodní hrana taky nebude potřeba
+            // spodní hrana taky nebude potřeba
         /*
            // glColor3f(1.0f, 1.0f, 0.0f + i);
             glTexCoord2f(1,0);
@@ -305,27 +308,27 @@ public class Renderer extends AbstractRenderer {
 
 
             // levá boční
-           // glColor3f(0.0f, 0.0f, 1.0f + i);
-            glTexCoord2f(1,1);
+            // glColor3f(0.0f, 0.0f, 1.0f + i);
+            glTexCoord2f(1, 1);
             glVertex3f(-1.0f, 1.0f, 1.0f + i);
-            glTexCoord2f(1,0);
+            glTexCoord2f(1, 0);
             glVertex3f(-1.0f, 1.0f, -1.0f + i);
-            glTexCoord2f(0,0);
+            glTexCoord2f(0, 0);
             glVertex3f(-1.0f, -1.0f, -1.0f + i);
-            glTexCoord2f(0,1);
+            glTexCoord2f(0, 1);
             glVertex3f(-1.0f, -1.0f, 1.0f + i);
 
 
             // pravá boční
 
             //glColor3f(1.0f, 0.0f, 1.0f + i);
-            glTexCoord2f(1,0);
+            glTexCoord2f(1, 0);
             glVertex3f(1.0f, 1.0f, -1.0f + i);
-            glTexCoord2f(1,1);
+            glTexCoord2f(1, 1);
             glVertex3f(1.0f, 1.0f, 1.0f + i);
-            glTexCoord2f(0,1);
+            glTexCoord2f(0, 1);
             glVertex3f(1.0f, -1.0f, 1.0f + i);
-            glTexCoord2f(0,0);
+            glTexCoord2f(0, 0);
             glVertex3f(1.0f, -1.0f, -1.0f + i);
 
 
@@ -334,10 +337,9 @@ public class Renderer extends AbstractRenderer {
         glPopMatrix();
 
 
-
         glDisable(GL_TEXTURE_2D);
 
-        glTranslatef(-5, -10f, 0.5f);
+        glTranslatef(-5, -10f, 1.5f);
 
 
         //střecha domečku pro včely
@@ -347,30 +349,30 @@ public class Renderer extends AbstractRenderer {
 
         glBegin(GL_TRIANGLE_STRIP);
         //glColor3f(1,-1,1);
-        glTexCoord2f(0,0);
-        glVertex3f(1,1,3.0f-1);
-        glTexCoord2f(1,0);
-        glVertex3f(1,-1,3.0f-1);
-        glTexCoord2f(0.5f,0.5f);
-        glVertex3f(0.0f,0.0f,4.0f-1);
-        glTexCoord2f(0,0);
-        glVertex3f(-1,1,3.0f-1);
-        glTexCoord2f(1,0);
-        glVertex3f(-1,-1,3.0f-1);
-        glTexCoord2f(0.5f,0.5f);
-        glVertex3f(0.0f,0.0f,4.0f-1);
-        glTexCoord2f(0,0);
-        glVertex3f(1,1,3.0f-1);
-        glTexCoord2f(1,0);
-        glVertex3f(-1,1,3.0f-1);
-        glTexCoord2f(0.5f,0.5f);
-        glVertex3f(0.0f,0.0f,4.0f-1);
-        glTexCoord2f(0,0);
-        glVertex3f(-1,-1,3.0f-1);
-        glTexCoord2f(1,0);
-        glVertex3f(1,-1,3.0f-1);
-        glTexCoord2f(0.5f,0.5f);
-        glVertex3f(0.0f,0.0f,4.0f-1);
+        glTexCoord2f(0, 0);
+        glVertex3f(1, 1, 3.0f - 1);
+        glTexCoord2f(1, 0);
+        glVertex3f(1, -1, 3.0f - 1);
+        glTexCoord2f(0.5f, 0.5f);
+        glVertex3f(0.0f, 0.0f, 4.0f - 1);
+        glTexCoord2f(0, 0);
+        glVertex3f(-1, 1, 3.0f - 1);
+        glTexCoord2f(1, 0);
+        glVertex3f(-1, -1, 3.0f - 1);
+        glTexCoord2f(0.5f, 0.5f);
+        glVertex3f(0.0f, 0.0f, 4.0f - 1);
+        glTexCoord2f(0, 0);
+        glVertex3f(1, 1, 3.0f - 1);
+        glTexCoord2f(1, 0);
+        glVertex3f(-1, 1, 3.0f - 1);
+        glTexCoord2f(0.5f, 0.5f);
+        glVertex3f(0.0f, 0.0f, 4.0f - 1);
+        glTexCoord2f(0, 0);
+        glVertex3f(-1, -1, 3.0f - 1);
+        glTexCoord2f(1, 0);
+        glVertex3f(1, -1, 3.0f - 1);
+        glTexCoord2f(0.5f, 0.5f);
+        glVertex3f(0.0f, 0.0f, 4.0f - 1);
 
 
         glEnd();
@@ -378,63 +380,69 @@ public class Renderer extends AbstractRenderer {
 
         glEnable(GL_TEXTURE_2D);
         tx9.bind();
-       // glTranslatef(-5, -10f, 0.5f);
+        // glTranslatef(-5, -10f, 0.5f);
         glBegin(GL_POLYGON);
-        glColor3f(1,1,1);
+        glColor3f(1, 1, 1);
 
 
-        glTexCoord2f(1,1);
+        glTexCoord2f(1, 1);
         glVertex3f(1.0f, -1.01f, 1.0f);
-        glTexCoord2f(0,1);
+        glTexCoord2f(0, 1);
         glVertex3f(-1.0f, -1.01f, 1.0f);
-        glTexCoord2f(0,0);
+        glTexCoord2f(0, 0);
         glVertex3f(-1.0f, -1.01f, -1.0f);
-        glTexCoord2f(1,0);
+        glTexCoord2f(1, 0);
         glVertex3f(1.0f, -1.01f, -1.0f);
-
 
 
         glEnd();
 
     }
 
-    private void bee(){
+    private void bee() {
 
 
-        float a=0.11f,  b=0.21f, c=0.11f;
-        int slic=30;
-        int ui=25;
+        float a = 0.11f, b = 0.21f, c = 0.11f; // vstupní hodnoty určující jak velká včela(trup) bude
+        int slic = 30; // slic + ui určují jak moc objektů "výpně" bude tvořit ovál včely, něco stejného jako slices and stack u gluSpere
+        int ui = 25;
 //15 10
-        float t = (float) ((Math.PI) /  slic);
-        float s= (float)(Math.PI/ ui);
+        float t = (float) ((Math.PI) / slic);
+        float s = (float) (Math.PI / ui);
 
         glMatrixMode(GL_TEXTURE);
         glLoadIdentity();
+        uhel++;
+        if (uhel == 15) {
+            uhel = 0;
+        }
 
 
         glMatrixMode(GL_MODELVIEW);
 
-       glEnable(GL_TEXTURE_2D);
-        glRotatef((float)fps, 100, 100, 100);
+
+        glEnable(GL_TEXTURE_2D);
+        glRotatef((float) fps, 100, 100, 100);
         glTranslatef(-1, -1f, 3f);
         tx10.bind();
         glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
         glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
 
-            glBegin(GL_TRIANGLE_STRIP);
-            glPushMatrix();
-        for(float i = (float) (-(Math.PI)/2); i <= (Math.PI/2)+.0001; i += t){
-            for(float j = (float) -(Math.PI); j <= (Math.PI)+.0001; j += s){
+        glBegin(GL_TRIANGLE_STRIP);
+        glPushMatrix();
+        // cyklus na vytvoření Elypsy
+        for (float i = (float) (-(Math.PI) / 2); i <= (Math.PI / 2) + .0001; i += t) {
+            for (float j = (float) -(Math.PI); j <= (Math.PI) + .0001; j += s) {
 
-                glTexCoord2f(0,0);
-                glVertex3f((float)( a * Math.cos(i) * Math.cos(s)),(float)( b * Math.cos(i) * Math.sin(s)), (float) (c * Math.sin(i)));
-                glTexCoord2f(1,1);
+                glTexCoord2f(0, 0);
+                glVertex3f((float) (a * Math.cos(i) * Math.cos(s)), (float) (b * Math.cos(i) * Math.sin(s)), (float) (c * Math.sin(i)));
+                glTexCoord2f(1, 1);
 
-                glVertex3f((float) (a *  Math.cos(i+t) * Math.cos(j)), (float)(b * Math.cos(i+t) * Math.sin(j)), (float)(c * Math.sin(i+t)));
+                glVertex3f((float) (a * Math.cos(i + t) * Math.cos(j)), (float) (b * Math.cos(i + t) * Math.sin(j)), (float) (c * Math.sin(i + t)));
             }
 
 
         }
+
 
         glFlush(); // vykonání předchozích kroků
         glEnd();
@@ -444,18 +452,43 @@ public class Renderer extends AbstractRenderer {
 
         glEnable(GL_TEXTURE_2D);
         glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR); //aplikování textury na 3d povrh
-        //klika na dveřích
         glPushMatrix();
         glTranslatef(0, 0.25f, 0);
-        // glTexCoord3f(1, 1, 1); //aplikace
         glColor3f(0f, 0f, 0f);
         glutSolidSphere(0.08, 100, 50); // POČET VRCHOLŮ V HORIZONTÁLNÍM SMĚRU (LAST)  A VERTIKÁLNÍM (LONGS)
         glPopMatrix();
 
+
+        glDisable(GL_TEXTURE_2D);
+
+
+        // křídla
+
+        glRotatef(uhel, 0, 10, 0);
+
+        glTranslatef(-0.4f, -0.9f, 0);
+        glBegin(GL_TRIANGLES);
+        glColor3f(1, 1, 1);
+        glVertex3f(0.3f, 1.0f, 0);
+        glColor3f(1, 1, 1);
+        glVertex3f(0f, 0.4f, 0);
+        glColor3f(1, 1, 1);
+        glVertex3f(0f, 0.8f, 0);
+
+        glEnd();
+
+        glBegin(GL_TRIANGLES);
+        glColor3f(1, 1, 1);
+        glVertex3f(0.5f, 1.0f, 0);
+        glColor3f(1, 1, 1);
+        glVertex3f(0.9f, 0.4f, 0);
+        glColor3f(1, 1, 1);
+        glVertex3f(0.9f, 0.8f, 0);
+
+        glEnd();
+
+
     }
-
-
-
 
 
     private void drawHouse() {
@@ -469,7 +502,7 @@ public class Renderer extends AbstractRenderer {
         glEnable(GL_TEXTURE_2D);
 
 
-        //- žaluzky
+        //- žaluzie
 
         tx4.bind();
         glEnable(GL_TEXTURE_2D);
@@ -762,6 +795,128 @@ public class Renderer extends AbstractRenderer {
 
     }
 
+    //----------------------TVORABA POVRCHU "ZEMĚ" --------------------------------//
+
+    private void ground() {
+
+
+        // ---------------základní trávník --- ----------------//
+        glMatrixMode(GL_TEXTURE);
+
+        glLoadIdentity();
+
+        glMatrixMode(GL_MODELVIEW);
+
+
+        glEnable(GL_TEXTURE_2D);
+
+
+        tx11.bind();
+        glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
+        glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
+        glBegin(GL_POLYGON);
+        glColor3f(1, 1, 1);
+        glTexCoord2f(1, 1);
+        glVertex3f(200, 200, -1.0f);
+        glTexCoord2f(0, 1);
+        glColor3f(1, 1, 1);
+        glVertex3f(-200, 200, -1.0f);
+        glColor3f(1, 1, 1);
+        glTexCoord2f(0, 0);
+        glVertex3f(-200, -200, -1.0f);
+        glColor3f(1, 1, 1);
+        glTexCoord2f(1, 0);
+        glVertex3f(200, -200, -1.0f);
+        glEnd();
+        glDisable(GL_TEXTURE_2D);
+
+        //-- příjezdová cesta ----/
+
+        glPushMatrix();
+        glTranslatef(20, 5, 0);
+        int pocetKostek = 15;
+        int countFlowers = 5;
+
+// for cyklus na vytvoření dlažby pro 2 kola po 15 kostkách
+
+        glEnable(GL_TEXTURE_2D);
+        tx12.bind();
+        for (int i = 0; i < pocetKostek; i++) {
+            for (int j = 0; j < 2; j++) {
+
+
+                glBegin(GL_QUADS);
+
+                glColor3f(1, 1, 1);
+                glTexCoord2f(0, 0);
+                glVertex3f(0 + j * 3, 0f - (1.2f * i), -0.99f);
+                glColor3f(1, 1, 1);
+                glTexCoord2f(1, 0);
+                glVertex3f(1 + j * 3, 0f - (1.2f * i), -0.99f);
+                glColor3f(1, 1, 1);
+                glTexCoord2f(1, 1);
+                glVertex3f(1 + j * 3, 1f - (1.2f * i), -0.99f);
+                glColor3f(1, 1, 1);
+                glTexCoord2f(0, 1);
+                glVertex3f(0 + j * 3, 1f - (1.2f * i), -0.99f);
+            }
+        }
+
+        glEnd();
+        glPopMatrix();
+        glDisable(GL_TEXTURE_2D);
+
+
+        //---- travnaté plochy --- //
+
+        glEnable(GL_TEXTURE_2D);
+
+        glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_CLAMP_TO_EDGE);   //-- souží k tomu aby tam kde se nenachází pixely trávy byla brava pozadí--//
+        glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_CLAMP_TO_EDGE);
+        glEnable(GL_BLEND);  // průhlednost - její zapnutí
+        glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA); // nastavení alfa kanálu
+        tx13.bind();
+
+        glPushMatrix();
+        glBegin(GL_QUADS); // čtverec ze předu
+
+        for (int i = 0; i < countFlowers; i++) {
+
+
+            for (int j = 0; j < countFlowers; j++) {
+                glTexCoord2f(1, 1);
+                glVertex3f(5 + (i * plantmove), 5 + (j * plantmove), -1.0f);
+                glTexCoord2f(1, 0);
+                glVertex3f(5 + (i * plantmove), 5 + (j * plantmove), 0);
+                glTexCoord2f(0, 0);
+                glVertex3f(6 + (i * plantmove), 5 + (j * plantmove), 0);
+                glTexCoord2f(0, 1);
+                glVertex3f(6 + (i * plantmove), 5 + (j * plantmove), -1.0f);
+
+
+                glBegin(GL_QUADS); // boční čtverec
+                //glColor3f(1,1,1);
+                glTexCoord2f(0, 1);
+                glVertex3f(5.5f + (i * plantmove), 5.5f + (j * plantmove), -1.0f);
+                glTexCoord2f(0, 0);
+                glVertex3f(5.5f + (i * plantmove), 5.5f + (j * plantmove), 0);
+                glTexCoord2f(1, 0);
+                glVertex3f(5.5f + (i * plantmove), 4.5f + (j * plantmove), 0);
+                glTexCoord2f(1, 1);
+                glVertex3f(5.5f + (i * plantmove), 4.5f + (j * plantmove), -1.0f);
+
+
+            }
+
+
+        }
+        glEnd();
+        glPopMatrix();
+        glDisable(GL_BLEND);
+        glDisable(GL_TEXTURE_2D);
+        // ------------------------- KONEC TRAVNATÉ PLOCHY---------------------------------//
+    }
+
 
     @Override
     public void display() {
@@ -770,17 +925,17 @@ public class Renderer extends AbstractRenderer {
         glEnable(GL_DEPTH_TEST);
 
         // vypocet fps, nastaveni rychlosti otaceni podle rychlosti prekresleni
-         mils = System.currentTimeMillis();
+        mils = System.currentTimeMillis();
         // System.out.println(mils);
         if ((mils - oldFPSmils) > 300) {
             fps = 1000 / (double) (mils - oldmils + 1);
             oldFPSmils = mils;
         }
-        String textInfo ;
+        String textInfo;
 
         //System.out.println(fps);
         float speed = 10; // pocet stupnu rotace za vterinu
-         step = speed * (mils - oldmils) / 1000.0f; // krok za jedno
+        step = speed * (mils - oldmils) / 1000.0f; // krok za jedno
         oldmils = mils;
 
 
@@ -829,7 +984,7 @@ public class Renderer extends AbstractRenderer {
             text += ", Ani[m] ";
 
 
-         text = String.format("FPS (%3.1f,)", fps);
+        text = String.format("FPS (%3.1f,)", fps);
         textInfo = String.format(" azimuth %3.1f, zenith %3.1f)", azimut, zenit);
         textInfo += String.format(" trans %3.1f,  delta %3.1f)", trans, deltaTrans);
 
@@ -844,8 +999,128 @@ public class Renderer extends AbstractRenderer {
     private void drawScene() {
         drawHouse();
         drawBeeHouse();
+        ground();
+        garage();
         bee();
+
+
     }
+
+    private void garage() {
+        glMatrixMode(GL_TEXTURE);
+
+        glLoadIdentity();
+
+        glMatrixMode(GL_MODELVIEW);
+
+
+        glEnable(GL_TEXTURE_2D);
+
+        tx14.bind();
+        glPushMatrix();
+        glTranslatef(22, 10, 1);
+        glScaled(3, 2, 2);
+        glBegin(GL_QUADS);
+
+        // zadní strana krychle
+        glColor3f(1.0f, 1.0f, 1);
+        glTexCoord2f(1, 0);
+        glVertex3f(1.0f, 1.0f, -1.0f);
+        glTexCoord2f(0, 0);
+        glVertex3f(-1.0f, 1.0f, -1.0f);
+        glTexCoord2f(0, 1);
+        glVertex3f(-1.0f, 1.0f, 1.0f);
+        glTexCoord2f(1, 1);
+        glVertex3f(1.0f, 1.0f, 1.0f);
+
+
+
+        //přední hrana krychle
+        // glColor3f(1.0f, 0.5f, 0.0f+i);
+        glTexCoord2f(1, 1);
+        glVertex3f(1.0f, -1.0f, 1.0f);
+        glTexCoord2f(0, 1);
+        glVertex3f(-1.0f, -1.0f, 1.0f);
+        glTexCoord2f(0, 0);
+        glVertex3f(-1.0f, -1.0f, -1.0f);
+        glTexCoord2f(1, 0);
+        glVertex3f(1.0f, -1.0f, -1.0f);
+
+
+        // levá boční
+        glTexCoord2f(1, 1);
+        glVertex3f(-1.0f, 1.0f, 1.0f);
+        glTexCoord2f(1, 0);
+        glVertex3f(-1.0f, 1.0f, -1.0f);
+        glTexCoord2f(0, 0);
+        glVertex3f(-1.0f, -1.0f, -1.0f);
+        glTexCoord2f(0, 1);
+        glVertex3f(-1.0f, -1.0f, 1.0f);
+
+
+        // pravá boční
+        glTexCoord2f(1, 0);
+        glVertex3f(1.0f, 1.0f, -1.0f );
+        glTexCoord2f(1, 1);
+        glVertex3f(1.0f, 1.0f, 1.0f );
+        glTexCoord2f(0, 1);
+        glVertex3f(1.0f, -1.0f, 1.0f );
+        glTexCoord2f(0, 0);
+        glVertex3f(1.0f, -1.0f, -1.0f );
+
+
+
+        glDisable(GL_TEXTURE_2D);
+
+
+        glEnd();
+
+
+        glEnable(GL_TEXTURE_2D);
+        tx15.bind();
+
+        //střecha garáže , nešla mi aplikovat textura proto změna a aplikování pomocí nového GL_QUADS
+        glBegin(GL_QUADS);
+        glTexCoord2f(1,0);
+        glVertex3f(1.0f, -1.5f, 1.0f );
+        glTexCoord2f(0,0);
+        glVertex3f(-1.0f, -1.5f, 1.0f );
+        glTexCoord2f(0,1);
+        glVertex3f(-1.0f, 1.0f, 1.0f );
+        glTexCoord2f(1,1);
+        glVertex3f(1.0f, 1.0f, 1.0f );
+
+
+        //pravý plech - nenanesení textury pouze ponechání barevného odstínu ( působí jako jeden celek plechu střechy) / lepší řešení než aplikace textury
+
+        glVertex3f(1.001f, -1.5f, 1.01f );
+
+        glVertex3f(1.001f, -1.5f, 0.8f );
+
+        glVertex3f(1.001f, 1.0f, 0.8f );
+
+        glVertex3f(1.001f, 1.0f, 1.01f );
+
+        //levý plech
+
+        glVertex3f(-1.001f, -1.5f, 1.01f );
+
+        glVertex3f(-1.001f, -1.5f, 0.8f );
+
+        glVertex3f(-1.001f, 1.0f, 0.8f );
+
+        glVertex3f(-1.001f, 1.0f, 1.01f );
+
+
+
+        glEnd();
+        glPopMatrix();
+        glDisable(GL_TEXTURE_2D);
+
+
+    }
+
+
 }
 
 

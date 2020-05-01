@@ -1,15 +1,25 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="15c6748f-0d06-4af0-9365-e1884ce587f5" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
+    <list default="true" id="15c6748f-0d06-4af0-9365-e1884ce587f5" name="Default Changelist" comment="3.0">
+      <change afterPath="$PROJECT_DIR$/out/production/projekt02-PGRFII/textures/garage.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/projekt02-PGRFII/textures/garroof.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/projekt02-PGRFII/textures/grass.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/projekt02-PGRFII/textures/grass1.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/projekt02-PGRFII/textures/pavement.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/projekt02-PGRFII/textures/plant01.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/res/textures/garage.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/res/textures/garroof.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/res/textures/grass.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/res/textures/grass1.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/res/textures/pavement.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/res/textures/plant01.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/projekt02-PGRFII/main/Renderer$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/projekt02-PGRFII/main/Renderer$1.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/projekt02-PGRFII/main/Renderer$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/projekt02-PGRFII/main/Renderer$2.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/projekt02-PGRFII/main/Renderer$3.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/projekt02-PGRFII/main/Renderer$3.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/projekt02-PGRFII/main/Renderer$4.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/projekt02-PGRFII/main/Renderer$4.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/projekt02-PGRFII/main/Renderer.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/projekt02-PGRFII/main/Renderer.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/projekt02-PGRFII/textures/photos_2017_12_6_fst_yellow-wall-grunge.jpg" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/projekt02-PGRFII/textures/sources.txt" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/projekt02-PGRFII/textures/sources.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/res/textures/sources.txt" beforeDir="false" afterPath="$PROJECT_DIR$/res/textures/sources.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/Renderer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/Renderer.java" afterDir="false" />
@@ -29,8 +39,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/Renderer.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="217">
-              <caret line="423" column="37" selection-start-line="423" selection-start-column="20" selection-end-line="423" selection-end-column="37" />
+            <state relative-caret-position="364">
+              <caret line="1111" column="20" selection-start-line="1111" selection-start-column="20" selection-end-line="1111" selection-end-column="20" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -39,48 +49,19 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="jar://C:/java/lwjgl-opengl.jar!/org/lwjgl/opengl/GL11.class">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="218">
-              <caret line="577" column="7" lean-forward="true" selection-start-line="577" selection-start-column="7" selection-end-line="577" selection-end-column="7" />
-              <folding>
-                <element signature="e#34911#34912#0" expanded="true" />
-                <element signature="e#34949#34950#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
+        <entry file="file://$PROJECT_DIR$/res/textures/grass1.jpg">
+          <provider selected="true" editor-type-id="images" />
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/App.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="102">
-              <caret line="6" selection-start-line="6" selection-end-line="6" />
-              <folding>
-                <element signature="e#152#153#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="jar://C:/java/lwjgl-glfw.jar!/org/lwjgl/glfw/GLFW.class">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="150">
-              <caret line="700" selection-start-line="700" selection-end-line="700" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/res/textures/drawner.JPG">
+        <entry file="file://$PROJECT_DIR$/res/textures/plant01.png">
           <provider selected="true" editor-type-id="images" />
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/global/LwjglWindow.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="143">
+            <state relative-caret-position="459">
               <caret line="39" selection-start-line="39" selection-end-line="39" />
               <folding>
                 <element signature="e#1225#1226#0" expanded="true" />
@@ -90,23 +71,25 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/res/textures/beeroof.jpg">
-          <provider selected="true" editor-type-id="images" />
+        <entry file="file://$PROJECT_DIR$/src/lwjglutils/OGLTexture2D.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="3315">
+              <caret line="224" column="34" selection-start-line="224" selection-start-column="34" selection-end-line="224" selection-end-column="34" />
+            </state>
+          </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/res/textures/beehouse.jpg">
-          <provider selected="true" editor-type-id="images" />
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/res/textures/photos.jpg">
-          <provider selected="true" editor-type-id="images" />
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/res/textures/red-tile-roof-texture.jpg">
-          <provider selected="true" editor-type-id="images" />
+        <entry file="file://$PROJECT_DIR$/src/main/App.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="85">
+              <caret line="6" column="12" selection-start-line="6" selection-start-column="12" selection-end-line="6" selection-end-column="12" />
+              <folding>
+                <element signature="e#105#106#0" expanded="true" />
+                <element signature="e#152#153#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
         </entry>
       </file>
     </leaf>
@@ -128,15 +111,26 @@
       <find>drawBee</find>
       <find>drawBeeHouse</find>
       <find>beehou</find>
-      <find>beehouse</find>
       <find>klika</find>
       <find>displa</find>
       <find>ste</find>
       <find>step</find>
-      <find>beehous</find>
-      <find>house</find>
       <find>střecha</find>
+      <find>uhel</find>
+      <find>gltra</find>
+      <find>drawho</find>
+      <find>push</find>
       <find>bee</find>
+      <find>beehous</find>
+      <find>random</find>
+      <find>number</find>
+      <find>groun</find>
+      <find>house</find>
+      <find>ground</find>
+      <find>gara</find>
+      <find>beehouse</find>
+      <find>boční</find>
+      <find>garage</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -161,8 +155,8 @@
     </option>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="950" />
-    <option name="width" value="980" />
+    <option name="x" value="-10" />
+    <option name="width" value="1115" />
     <option name="height" value="1040" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
@@ -171,7 +165,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="PackagesPane" />
       <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
@@ -200,6 +193,12 @@
               <item name="projekt02-PGRFII" type="b2602c69:ProjectViewProjectNode" />
               <item name="projekt02-PGRFII" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="global" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="projekt02-PGRFII" type="b2602c69:ProjectViewProjectNode" />
+              <item name="projekt02-PGRFII" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="main" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -210,6 +209,7 @@
           <select />
         </subPane>
       </pane>
+      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -219,9 +219,11 @@
     <property name="last_opened_file_path" value="$PROJECT_DIR$/../prgfII" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
+    <property name="nodejs_package_manager_path" value="npm" />
     <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
+    <property name="restartRequiresConfirmation" value="false" />
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -288,6 +290,10 @@
       <workItem from="1587132566509" duration="13305000" />
       <workItem from="1587212085525" duration="5809000" />
       <workItem from="1587306571486" duration="22221000" />
+      <workItem from="1587330414264" duration="492000" />
+      <workItem from="1588170994642" duration="15834000" />
+      <workItem from="1588270198701" duration="5165000" />
+      <workItem from="1588345738442" duration="11020000" />
     </task>
     <task id="LOCAL-00001" summary="1.0">
       <created>1586545715895</created>
@@ -303,16 +309,24 @@
       <option name="project" value="LOCAL" />
       <updated>1586545726626</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="2.0">
+      <created>1587330495693</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1587330495693</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="73114000" />
+    <option name="totallyTimeSpent" value="105625000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
+    <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.1295302" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.16510066" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Image Layers" order="2" />
       <window_info id="Designer" order="3" />
@@ -321,13 +335,13 @@
       <window_info id="Favorites" order="6" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.33144477" />
-      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49932885" weight="0.3243626" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.49932885" visible="true" weight="0.32719547" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.39943343" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Version Control" order="8" />
+      <window_info anchor="bottom" id="Version Control" order="8" weight="0.3286119" />
       <window_info anchor="bottom" id="Database Changes" order="9" />
       <window_info anchor="bottom" id="Terminal" order="10" />
       <window_info anchor="bottom" id="Event Log" order="11" sideWeight="0.50067115" side_tool="true" weight="0.3243626" />
@@ -343,7 +357,7 @@
       <window_info anchor="right" id="Database" order="8" />
     </layout>
     <layout-to-restore>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.12684564" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.1328859" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Image Layers" order="2" />
       <window_info id="Designer" order="3" />
@@ -352,16 +366,16 @@
       <window_info id="Favorites" order="6" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.33144477" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.3243626" />
+      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49932885" weight="0.3243626" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.39943343" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Version Control" order="8" />
+      <window_info anchor="bottom" id="Version Control" order="8" weight="0.3286119" />
       <window_info anchor="bottom" id="Database Changes" order="9" />
       <window_info anchor="bottom" id="Terminal" order="10" />
-      <window_info anchor="bottom" id="Event Log" order="11" side_tool="true" />
+      <window_info anchor="bottom" id="Event Log" order="11" sideWeight="0.50067115" side_tool="true" weight="0.3243626" />
       <window_info anchor="bottom" id="Messages" order="12" weight="0.3286119" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
@@ -379,7 +393,8 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="1.0" />
-    <option name="LAST_COMMIT_MESSAGE" value="1.0" />
+    <MESSAGE value="2.0" />
+    <option name="LAST_COMMIT_MESSAGE" value="2.0" />
   </component>
   <component name="com.vaadin.designer2.intellij.settings.SizePresetsSettingsComponent">
     <option name="sizePresets">
@@ -470,22 +485,8 @@
     <entry file="file://$PROJECT_DIR$/res/textures/door.jpg">
       <provider selected="true" editor-type-id="images" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/res/textures/sources.txt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="68">
-          <caret line="4" column="40" selection-start-line="4" selection-start-column="40" selection-end-line="4" selection-end-column="40" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/res/textures/gold.jpg">
       <provider selected="true" editor-type-id="images" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/lwjglutils/OGLTexture2D.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="3315">
-          <caret line="224" column="34" selection-start-line="224" selection-start-column="34" selection-end-line="224" selection-end-column="34" />
-        </state>
-      </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/res/textures/e952eced5348711e8a305c740399abef.jpg">
       <provider selected="true" editor-type-id="images" />
@@ -493,7 +494,28 @@
     <entry file="file://$PROJECT_DIR$/res/textures/livingroom.jpg">
       <provider selected="true" editor-type-id="images" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/res/textures/red-tile-roof-texture.jpg">
+    <entry file="jar://C:/java/lwjgl-opengl.jar!/org/lwjgl/opengl/GL11.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="9452">
+          <caret line="577" column="7" selection-start-line="577" selection-start-column="7" selection-end-line="577" selection-end-column="7" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/res/textures/sources.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="68">
+          <caret line="4" column="40" selection-start-line="4" selection-start-column="40" selection-end-line="4" selection-end-column="40" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://C:/java/lwjgl-glfw.jar!/org/lwjgl/glfw/GLFW.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="597">
+          <caret line="700" selection-start-line="700" selection-end-line="700" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/res/textures/drawner.JPG">
       <provider selected="true" editor-type-id="images" />
     </entry>
     <entry file="file://$PROJECT_DIR$/res/textures/beeroof.jpg">
@@ -502,19 +524,16 @@
     <entry file="file://$PROJECT_DIR$/res/textures/beehouse.jpg">
       <provider selected="true" editor-type-id="images" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/res/textures/drawner.JPG">
+    <entry file="file://$PROJECT_DIR$/res/textures/photos.jpg">
       <provider selected="true" editor-type-id="images" />
     </entry>
-    <entry file="jar://C:/java/lwjgl-glfw.jar!/org/lwjgl/glfw/GLFW.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="150">
-          <caret line="700" selection-start-line="700" selection-end-line="700" />
-        </state>
-      </provider>
+    <entry file="file://$PROJECT_DIR$/res/textures/red-tile-roof-texture.jpg">
+      <provider selected="true" editor-type-id="images" />
     </entry>
+    <entry file="file://$PROJECT_DIR$/res/textures/pav.JPG" />
     <entry file="file://$PROJECT_DIR$/src/global/LwjglWindow.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="143">
+        <state relative-caret-position="459">
           <caret line="39" selection-start-line="39" selection-end-line="39" />
           <folding>
             <element signature="e#1225#1226#0" expanded="true" />
@@ -522,34 +541,34 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/lwjglutils/OGLTexture2D.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="3315">
+          <caret line="224" column="34" selection-start-line="224" selection-start-column="34" selection-end-line="224" selection-end-column="34" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/App.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="102">
-          <caret line="6" selection-start-line="6" selection-end-line="6" />
+        <state relative-caret-position="85">
+          <caret line="6" column="12" selection-start-line="6" selection-start-column="12" selection-end-line="6" selection-end-column="12" />
           <folding>
+            <element signature="e#105#106#0" expanded="true" />
             <element signature="e#152#153#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/res/textures/photos.jpg">
+    <entry file="file://$PROJECT_DIR$/res/textures/grass1.jpg">
       <provider selected="true" editor-type-id="images" />
     </entry>
-    <entry file="jar://C:/java/lwjgl-opengl.jar!/org/lwjgl/opengl/GL11.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="218">
-          <caret line="577" column="7" lean-forward="true" selection-start-line="577" selection-start-column="7" selection-end-line="577" selection-end-column="7" />
-          <folding>
-            <element signature="e#34911#34912#0" expanded="true" />
-            <element signature="e#34949#34950#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
+    <entry file="file://$PROJECT_DIR$/res/textures/plant01.png">
+      <provider selected="true" editor-type-id="images" />
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/Renderer.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="217">
-          <caret line="423" column="37" selection-start-line="423" selection-start-column="20" selection-end-line="423" selection-end-column="37" />
+        <state relative-caret-position="364">
+          <caret line="1111" column="20" selection-start-line="1111" selection-start-column="20" selection-end-line="1111" selection-end-column="20" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
